@@ -1,0 +1,9 @@
+{
+  "name" : "AvroDemo",
+  "version" : {
+    "int" : 181
+  },
+  "version_uuid" : {
+    "string" : "1.8.1"
+  }
+}

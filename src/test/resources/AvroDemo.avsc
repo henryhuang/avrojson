@@ -1,0 +1,9 @@
+{"namespace": "com.github.henryhuang.avrojson",
+ "type": "record",
+ "name": "AvroDemo",
+ "fields": [
+     {"name": "name", "type": "string"},
+     {"name": "version",  "type": ["int", "null"]},
+     {"name": "version_uuid", "type": ["string", "null"]}
+ ]
+}
