@@ -29,8 +29,13 @@ public class AvroJson {
 	 * @param avroObject
 	 *            avro java Object
 	 * @param clazz
+	 *            clazz Avro Object class
 	 * @param schema
 	 *            avro {@link Schema}
+	 * @param <T>
+	 *            Avro Object class type
+	 * @throws IOException
+	 *             Some related class throws
 	 * @return avro object's JSON format string, if throw {@link IOException},
 	 *         return null
 	 */
@@ -44,10 +49,16 @@ public class AvroJson {
 	 * @param avroObject
 	 *            avro java Object
 	 * @param clazz
+	 *            Avro Object class
 	 * @param schema
 	 *            avro {@link Schema}
 	 * @param pretty
 	 *            pretty if true, else not
+	 * @param <T>
+	 *            Avro Object class type
+	 * 
+	 * @throws IOException
+	 *             Some related class throws
 	 * @return avro object's JSON format string, if throw {@link IOException},
 	 *         return null
 	 */
