@@ -36,7 +36,7 @@ public class AvroJsonTest {
 
 		String jsonString = null;
 		try {
-			jsonString = AvroJson.avroObjectToJson(avroDemo, AvroDemo.class, avroDemo.getSchema(), pretty);
+			jsonString = AvroJson.recordToJson(avroDemo, pretty);
 		} catch (IOException e) {
 			e.printStackTrace();
 			fail(e.getMessage());

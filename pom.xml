@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 
 	<name>avrojson</name>
-	<description>Avrojson is an avro util for convering avro java object to json, or json object to java object.</description>
+	<description>Avrojson is an avro util for convering avro java object to avro-specificed json.</description>
 	<url>https://github.com/henryhuang/avrojson</url>
 
 	<licenses>

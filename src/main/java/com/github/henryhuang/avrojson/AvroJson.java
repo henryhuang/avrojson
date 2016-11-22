@@ -4,83 +4,58 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import org.apache.avro.Schema;
-import org.apache.avro.generic.GenericDatumReader;
 import org.apache.avro.generic.GenericDatumWriter;
+import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.io.DatumWriter;
-import org.apache.avro.io.Decoder;
-import org.apache.avro.io.DecoderFactory;
-import org.apache.avro.io.Encoder;
 import org.apache.avro.io.EncoderFactory;
 import org.apache.avro.io.JsonEncoder;
-import org.apache.avro.specific.SpecificDatumWriter;
 
 /**
  * 
  * 
  * @author <a href="mailto:h1886@outlook.com">Henry Huang</a>
  * @version 9:28:20 PM Nov 20, 2016
- * @since 0.0.1
+ * @since 1.8.1
  */
 public class AvroJson {
 
 	/**
-	 * convert an avro java object to JSON format string, not pretty.
+	 * Convert an avro record to JSON format string, not pretty.
 	 * 
-	 * @param avroObject
-	 *            avro java Object
-	 * @param clazz
-	 *            clazz Avro Object class
-	 * @param schema
-	 *            avro {@link Schema}
-	 * @param <T>
-	 *            Avro Object class type
+	 * @param genericRecord
+	 *            an avro record
+	 * 
 	 * @throws IOException
 	 *             Some related class throws
-	 * @return avro object's JSON format string, if throw {@link IOException},
-	 *         return null
+	 * @return avro object's JSON format string
+	 * 
 	 */
-	public static <T> String avroObjectToJson(T avroObject, Class<T> clazz, Schema schema) throws IOException {
-		return avroObjectToJson(avroObject, clazz, schema, false);
+	public static String recordToJson(GenericRecord genericRecord) throws IOException {
+		return recordToJson(genericRecord, false);
 	}
 
 	/**
-	 * convert an avro java object to JSON format string
+	 * Convert an avro record to JSON format string.
 	 * 
-	 * @param avroObject
-	 *            avro java Object
-	 * @param clazz
-	 *            Avro Object class
-	 * @param schema
-	 *            avro {@link Schema}
+	 * @param genericRecord
+	 *            an avro record
 	 * @param pretty
-	 *            pretty if true, else not
-	 * @param <T>
-	 *            Avro Object class type
+	 *            pretty the json string if true
 	 * 
 	 * @throws IOException
 	 *             Some related class throws
-	 * @return avro object's JSON format string, if throw {@link IOException},
-	 *         return null
+	 * @return avro object's JSON format string
+	 * 
 	 */
-	public static <T> String avroObjectToJson(T avroObject, Class<T> clazz, Schema schema, boolean pretty)
-			throws IOException {
+	public static String recordToJson(GenericRecord genericRecord, boolean pretty) throws IOException {
 
-		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		Encoder binaryEncoder = EncoderFactory.get().binaryEncoder(outputStream, null);
-		SpecificDatumWriter<T> specificDatumWriter = new SpecificDatumWriter<T>(clazz);
-		specificDatumWriter.write(avroObject, binaryEncoder);
-		binaryEncoder.flush();
-
-		byte[] bytesValue = outputStream.toByteArray();
-		GenericDatumReader<Object> reader = new GenericDatumReader<Object>(schema);
+		Schema schema = genericRecord.getSchema();
 		DatumWriter<Object> writer = new GenericDatumWriter<Object>(schema);
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		JsonEncoder encoder = EncoderFactory.get().jsonEncoder(schema, output, pretty);
-		Decoder decoder = DecoderFactory.get().binaryDecoder(bytesValue, null);
-		Object datum = reader.read(null, decoder);
-		writer.write(datum, encoder);
+		writer.write(genericRecord, encoder);
 		encoder.flush();
-		output.flush();
+
 		return new String(output.toByteArray(), "UTF-8");
 
 	}
