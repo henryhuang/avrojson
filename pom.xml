@@ -4,7 +4,7 @@
 
 	<groupId>com.github.henryhuang</groupId>
 	<artifactId>avrojson</artifactId>
-	<version>1.8.1</version>
+	<version>1.8.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>avrojson</name>
@@ -13,8 +13,8 @@
 
 	<licenses>
 		<license>
-			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<name>The MIT License</name>
+			<url>https://github.com/henryhuang/avrojson/blob/master/LICENSE</url>
 		</license>
 	</licenses>
 
@@ -29,7 +29,7 @@
 		<connection>scm:git:git@github.com:henryhuang/avrojson.git</connection>
 		<developerConnection>scm:git:git@github.com:henryhuang/avrojson.git</developerConnection>
 		<url>git@github.com:henryhuang/avrojson.git</url>
-		<tag>avrojson-1.8.1</tag>
+		<tag>avrojson-1.8.2</tag>
 	</scm>
 
 	<build>

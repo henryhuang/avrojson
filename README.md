@@ -17,7 +17,7 @@ Avrojson is an avro util for convering **avro java object** to **avro-specificed
 <dependency>
     <groupId>com.github.henryhuang</groupId>
     <artifactId>avrojson</artifactId>
-    <version>1.8.1</version>
+    <version>1.8.2</version>
 </dependency>
 
 ```
