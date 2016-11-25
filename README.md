@@ -36,5 +36,5 @@ Avrojson is an avro util for convering **avro java object** to **avro-specificed
 
 ## License
 
-[ISC](LICENSE.md)
+[MIT](LICENSE)
 
